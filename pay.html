@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>เลือกช่องทางการชำระเงิน</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>เลือกช่องทางการชำระเงิน</h1>
+    <p id="amountText"></p>
+
+    <button onclick="payWithTrueMoney()">
+      <img src="truemoney-logo.png" alt="TrueMoney" style="height: 24px; vertical-align: middle;"> TrueMoney Wallet
+    </button>
+    <button onclick="payWithCOD()">เก็บเงินปลายทาง</button>
+
+    <div id="status" style="margin-top: 20px;"></div>
+  </div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const amount = urlParams.get("amount");
+
+    document.getElementById("amountText").innerText = `ยอดเงินที่ต้องชำระ: ${amount} บาท`;
+
+    function redirectTo(link) {
+      let countdown = 5;
+      const status = document.getElementById("status");
+      status.innerText = `กำลังไปยังหน้าชำระเงินใน ${countdown} วินาที...`;
+
+      const timer = setInterval(() => {
+        countdown--;
+        if (countdown === 0) {
+          clearInterval(timer);
+          window.location.href = link;
+        } else {
+          status.innerText = `กำลังไปยังหน้าชำระเงินใน ${countdown} วินาที...`;
+        }
+      }, 1000);
+    }
+
+    function payWithTrueMoney() {
+      const link = `https://tmn.app.link/4Bphr4zdjSb?amount=${amount}`;
+      redirectTo(link);
+    }
+
+    function payWithCOD() {
+      // กลับมายังหน้าคอนเฟิร์มทันที
+      const link = `confirm.html?amount=${amount}&method=COD`;
+      redirectTo(link);
+    }
+  </script>
+</body>
+</html>
