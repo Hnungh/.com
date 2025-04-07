@@ -1,26 +1,27 @@
-
 <!DOCTYPE html>
 <html lang="th">
 <head>
-    <meta charset="UTF-8">
-    <title>แอปแนะนำ</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>กรอกจำนวนเงิน</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>แอปแนะนำ</h1>
-        <div class="app-card">
-            <img src="colorlab-icon.png" alt="Color Lab Icon">
-            <div class="app-info">
-                <h2>Color Lab</h2>
-                <p>แอปตกแต่งรูปด้วยสีสันที่สวยงาม</p>
-                <a href="color-lab.html" class="btn">ดาวน์โหลด</a>
-            </div>
-        </div>
-    </div>
+  <div class="container">
+    <h1>กรอกจำนวนเงินที่ต้องชำระ</h1>
+    <input type="number" id="amount" placeholder="เช่น 99.00 บาท">
+    <button onclick="goToPayment()">ไปหน้าชำระเงิน</button>
+  </div>
+
+  <script>
+    function goToPayment() {
+      const amount = document.getElementById("amount").value;
+      if (!amount || isNaN(amount) || amount <= 0) {
+        alert("กรุณากรอกจำนวนเงินให้ถูกต้อง");
+        return;
+      }
+      // ส่งยอดเงินต่อผ่าน URL
+      window.location.href = `pay.html?amount=${amount}`;
+    }
+  </script>
 </body>
 </html>
-<li>
-  <img src="earnbay-icon.png" alt="EarnBay Icon" width="100">
-  <p><a href="earnbay.html">ดาวน์โหลด EarnBay</a></p>
-</li>
