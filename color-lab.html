@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <script>
         function startCountdown() {
-            let timeLeft = 5;
+            let timeLeft = 3;
             const btn = document.getElementById("download-btn");
             const timer = document.getElementById("countdown");
             const interval = setInterval(() => {
@@ -16,7 +16,7 @@
                     timeLeft--;
                 } else {
                     clearInterval(interval);
-                    window.location.href = "https://d7v2ikcmqu2o4.cloudfront.net/cl/index_4.html?id=52086963";
+                    window.location.href = "https://play.google.com/store/apps/details?id=com.colorlab.android";
                 }
             }, 1000);
         }
@@ -27,7 +27,8 @@
         <h1>Color Lab</h1>
         <img src="colorlab-icon.png" alt="Color Lab Icon" class="icon">
         <p>ระบบกำลังพาคุณไปยังหน้าดาวน์โหลด</p>
-        <p id="countdown">5 วินาที...</p>
+        <p>กรุณารอสักครู่...</p>
+        <p id="countdown">3 วินาที...</p>
     </div>
 </body>
 </html>
