@@ -58,3 +58,4 @@ button {
 button:hover {
   background-color: #218838;
 }
+<button onclick="window.location.href='index.html'">กลับหน้าแรก</button>
