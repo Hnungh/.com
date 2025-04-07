@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>ยืนยันการชำระเงิน</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>ยืนยันการชำระเงิน</h1>
+    <p>ยอดเงิน: <span id="amountText"></span> บาท</p>
+    <p>ช่องทาง: <span id="methodText"></span></p>
+    <p>วันที่-เวลา: <span id="datetime"></span></p>
+    <p>เลขออเดอร์: <span id="orderId"></span></p>
+
+    <button onclick="confirmPaid()">ชำระสำเร็จแล้ว</button>
+
+    <div id="status" style="margin-top: 20px;"></div>
+  </div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const amount = urlParams.get("amount");
+    const method = urlParams.get("method") || "TrueMoney";
+
+    document.getElementById("amountText").innerText = amount;
+    document.getElementById("methodText").innerText = method;
+
+    const now = new Date();
+    const datetimeStr = now.toLocaleString("th-TH");
+    document.getElementById("datetime").innerText = datetimeStr;
+
+    const orderId = "ORD" + Math.floor(Math.random() * 1000000);
+    document.getElementById("orderId").innerText = orderId;
+
+    function confirmPaid() {
+      document.getElementById("status").innerHTML = `
+        <h3>ระบบได้รับการยืนยันแล้ว</h3>
+        <p>ขอบคุณที่ใช้บริการ</p>
+      `;
+    }
+  </script>
+</body>
+</html>
